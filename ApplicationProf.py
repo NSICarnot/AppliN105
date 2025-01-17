@@ -32,10 +32,10 @@ class App():
         
         # Content de la menubar
         # Bouton sous forme d'image qui affiche la scene affichant tous les ordinateurs connectées
-        computers_button = ttk.Button(menubar, text='Ord.', command=lambda: self.change_scene(self.scenes[0]))
+        computers_button = ttk.Button(menubar, text='Ord.', command=lambda: self.change_scene(self.scenes[0]), width=5)
         computers_button.pack(side='top', fill='x')
         
-        other_button = ttk.Button(menubar, text='Oth.', command=lambda: self.change_scene(self.scenes[1]))
+        other_button = ttk.Button(menubar, text='Oth.', command=lambda: self.change_scene(self.scenes[1]), width=5)
         other_button.pack(side='top', fill='x')
         
         # Frame qui contient le contenu de l'application
