@@ -2,6 +2,7 @@
 Application de contrôle à distance d'ordinateurs en LAN
 
 ## TODO List:
+ - Scan des IPs en asynchrone
  - Les fonctionalités:
     - Affichage de tous les ordinateurs connectés sur le réseau (255.255.255.0)
     - Affichage des informations propres à un PC

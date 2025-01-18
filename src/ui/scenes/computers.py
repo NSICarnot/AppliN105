@@ -7,7 +7,7 @@ from src.ui.components.computer_compo import ComputerComponent
 class ComputersScene(SceneInterface):
     def __init__(self, root: "CTk"):
         super().__init__(root)
-        
+
         self.computers: list[ComputerComponent] = []
         
     def build_interface(self):
@@ -21,7 +21,11 @@ class ComputersScene(SceneInterface):
         for i, computer in enumerate(self.computers):
             computer.build_interface()
             computer.get_content().grid(row=i//4+1, column=i%4, padx=((1150)-250*4)//10, pady=20)
-        
+            # Bind the computer component to pop the details window when clicked
+            computer.get_content().bind("<Button-1>", lambda e, comp=computer: comp.show_details())
+            # Also bind its children to the same event
+            for child in computer.get_content().winfo_children():
+                child.bind("<Button-1>", lambda e, comp=computer: comp.show_details())
         
     def set_parent(self, parent):
         return super().set_parent(parent)

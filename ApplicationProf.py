@@ -4,7 +4,6 @@ from tkinter import ttk
 from customtkinter import CTk
 from src.ui.scenes.scene_interface import SceneInterface
 from src.ui.scenes.computers import ComputersScene
-from src.ui.scenes.other import OtherScene
 
 
 class App():
@@ -14,7 +13,7 @@ class App():
         self.root.geometry('1200x900')
         self.root.resizable(False, False)
         
-        self.scenes: list[SceneInterface] = [ComputersScene(self.root), OtherScene(self.root)]
+        self.scenes: list[SceneInterface] = [ComputersScene(self.root), ]
         self.actual_scene: SceneInterface = self.scenes[0]
         
         c.init_styles()
@@ -35,9 +34,6 @@ class App():
         computers_button = ttk.Button(menubar, text='Ord.', command=lambda: self.change_scene(self.scenes[0]), width=5)
         computers_button.pack(side='top', fill='x')
         
-        other_button = ttk.Button(menubar, text='Oth.', command=lambda: self.change_scene(self.scenes[1]), width=5)
-        other_button.pack(side='top', fill='x')
-        
         # Frame qui contient le contenu de l'application
         # Content de l'application
         self.actual_scene.build_interface()
@@ -49,7 +45,7 @@ class App():
         self.actual_scene = scene
         self.actual_scene.build_interface()
         self.actual_scene.get_content().pack(side='top', fill='both', expand=True)
-    
+
     def mainloop(self):
         self.root.mainloop()
 
