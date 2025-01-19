@@ -1,9 +1,11 @@
 import config as c
+import customtkinter as ctk
 
-from tkinter import ttk
 from customtkinter import CTk
 from src.ui.scenes.scene_interface import SceneInterface
-from src.ui.scenes.computers import ComputersScene
+from src.ui.scenes.computers_scene import ComputersScene
+from src.ui.scenes.control_scene import ControlScene
+from src.helpers import image_helper as ih
 
 
 class App():
@@ -13,7 +15,7 @@ class App():
         self.root.geometry('1200x900')
         self.root.resizable(False, False)
         
-        self.scenes: list[SceneInterface] = [ComputersScene(self.root), ]
+        self.scenes: list[SceneInterface] = [ComputersScene(self.root), ControlScene(self.root)]
         self.actual_scene: SceneInterface = self.scenes[0]
         
         c.init_styles()
@@ -21,18 +23,29 @@ class App():
         
     def build_interface(self):        
         # Frame qui contient la toolbar d'une hauteur de 50px
-        toolbar = ttk.Frame(self.root, height=30, style="ToolBarStyle.TFrame")
+        toolbar = ctk.CTkFrame(self.root, height=30, fg_color="red")
         toolbar.pack(side='top', fill='x')
         
         # Content de la toolbar
         # Frame qui contient la menubar à gauche de la fenêtre
-        menubar = ttk.Frame(self.root, width=50, style="SideBarStyle.TFrame")
+        menubar = ctk.CTkFrame(self.root, width=500, fg_color="blue")
         menubar.pack(side='left', fill='y')
         
         # Content de la menubar
         # Bouton sous forme d'image qui affiche la scene affichant tous les ordinateurs connectées
-        computers_button = ttk.Button(menubar, text='Ord.', command=lambda: self.change_scene(self.scenes[0]), width=5)
-        computers_button.pack(side='top', fill='x')
+        self.computer_img = ih.tk_CTkImage(
+            ih.open_image('./res/img/computer.png'), 50, 50
+        )  # Self pour garder trace de l'image dans la classe et pour ne pas la supprimer de la mémoire
+        computers_button = ctk.CTkLabel(menubar, image=self.computer_img, text='', width=50, height=50)
+        computers_button.pack(side='top')
+        computers_button.bind("<Button-1>", lambda e: self.change_scene(self.scenes[0]))
+
+        self.control_img = ih.tk_CTkImage(
+            ih.open_image('./res/img/access-control.png'), 50, 50
+        )
+        control_button = ctk.CTkLabel(menubar, image=self.control_img, text='', width=50, height=50)
+        control_button.pack(side='top')
+        control_button.bind("<Button-1>", lambda e: self.change_scene(self.scenes[1]))
         
         # Frame qui contient le contenu de l'application
         # Content de l'application

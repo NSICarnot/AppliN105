@@ -1,4 +1,5 @@
 import config as c
+import customtkinter as ctk
 
 from tkinter import ttk
 from src.ui.scenes.scene_interface import SceneInterface
@@ -11,9 +12,9 @@ class ComputersScene(SceneInterface):
         self.computers: list[ComputerComponent] = []
         
     def build_interface(self):
-        self.content = ttk.Frame(self.root)
+        self.content = ctk.CTkFrame(self.root)
         
-        self.text = ttk.Label(self.content, text='Ordinateurs Connectées', style='HeadTitle.TLabel')
+        self.text = ctk.CTkLabel(self.content, text='Ordinateurs Connectées', font=c.HEADTITLE_FONT)
         self.text.grid(row=0, column=0, columnspan=4)
         
         self.computers = [ComputerComponent(self.content) for _ in range(12)]

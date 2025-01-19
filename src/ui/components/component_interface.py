@@ -1,9 +1,9 @@
-from tkinter import ttk
+import customtkinter as ctk
 
 class ComponentInterface:
-    def __init__(self, root: ttk.Frame):
+    def __init__(self, root: ctk.CTkFrame):
         self.root = root
-        self.content: ttk.Frame = None
+        self.content: ctk.CTkFrame = None
         
     def build_interface(self):
         pass

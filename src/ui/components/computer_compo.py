@@ -1,12 +1,12 @@
 from PIL import ImageTk, Image
-from tkinter import ttk
+import customtkinter as ctk
 from src.ui.components.component_interface import ComponentInterface
 from src.ui.windows.computer_details import ComputerDetailScene
 import src.helpers.image_helper as ih
 
 
 class ComputerComponent(ComponentInterface):
-    def __init__(self, root: ttk.Frame):
+    def __init__(self, root: ctk.CTkFrame):
         super().__init__(root)
 
         self.ip_addr: str = "172.16.105.1"
@@ -16,20 +16,20 @@ class ComputerComponent(ComponentInterface):
         
     def build_interface(self):
         # Frame de très petite taille
-        self.content = ttk.Frame(self.root, width=250, height=200)
+        self.content = ctk.CTkFrame(self.root, width=250, height=200)
         
-        self.text = ttk.Label(self.content, text=f'{self.ip_addr}  ({self.logged_usr})')
+        self.text = ctk.CTkLabel(self.content, text=f'{self.ip_addr}  ({self.logged_usr})')
         self.text.pack(side='top')
         
         # adding the image in ./res/img/kali-desktop-xfce.jpg to the frame and resized to the size of 25x15
-        img = ih.resize_image("./res/img/kali-desktop-xfce.jpg", 250, 150)
-        self.image = ih.to_ImageTk(img)
-        self.screen_image = ttk.Label(self.content, image=self.image)
+        img = ih.open_image("./res/img/kali-desktop-xfce.jpg")
+        self.image = ih.tk_CTkImage(img, 250, 150)
+        self.screen_image = ctk.CTkLabel(self.content, image=self.image, text='')
         self.screen_image.pack(side='top')
 
     def show_details(self) -> None:
         if isinstance(self.details_window, ComputerDetailScene): self.details_window.terminate()
-        self.details_window = ComputerDetailScene(self.ip_addr, self.logged_usr, self.image)
+        self.details_window = ComputerDetailScene(self.ip_addr, self.logged_usr)
         self.details_window.mainloop()
         self.details_window = None
         

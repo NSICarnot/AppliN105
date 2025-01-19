@@ -1,12 +1,12 @@
 import _tkinter
 import src.helpers.image_helper as ih
+import customtkinter as ctk
 
-from tkinter import ttk
 from customtkinter import CTk
 from PIL import Image, ImageTk
 
 class ComputerDetailScene:
-    def __init__(self, ipaddr: str, logged_usr: str, image):
+    def __init__(self, ipaddr: str, logged_usr: str):
         self.root = CTk()
         self.root.geometry('800x800')
         self.root.resizable(False, False)
@@ -18,7 +18,7 @@ class ComputerDetailScene:
         self.build_interface()
 
     def build_interface(self):
-        self.content = ttk.Frame(self.root)
+        self.content = ctk.CTkFrame(self.root)
         self.content.pack()
 
         self.details_dict = {
@@ -37,12 +37,12 @@ class ComputerDetailScene:
         }
 
         for i, (key, value) in enumerate(self.details_dict.items()):
-            ttk.Label(self.content, text=key).grid(row=i+1, column=0, sticky='w')
-            ttk.Label(self.content, text=value).grid(row=i+1, column=1, sticky='w')
+            ctk.CTkLabel(self.content, text=key).grid(row=i+1, column=0, sticky='w')
+            ctk.CTkLabel(self.content, text=value).grid(row=i+1, column=1, sticky='w')
 
         img = ih.resize_image("./res/img/kali-desktop-xfce.jpg", 500, 300)
         self.image = ImageTk.PhotoImage(img, master=self.content)  # Reset master to avoid garbage collector to delete the image
-        self.screen_image = ttk.Label(self.content, image=self.image)
+        self.screen_image = ctk.CTkLabel(self.content, image=self.image)
         self.screen_image.grid(row=100, column=0, columnspan=4)
 
     def get_content(self):

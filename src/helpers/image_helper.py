@@ -1,7 +1,7 @@
 import os
 
-from PIL import ImageTk, Image
-
+from PIL import Image
+from customtkinter import CTkImage
 
 def resize_image(img_path: str, width: int, height: int) -> Image:
     try:
@@ -15,5 +15,15 @@ def resize_image(img_path: str, width: int, height: int) -> Image:
         return Image.new('RGB', (width, height))
 
 
-def to_ImageTk(img: Image) -> ImageTk.PhotoImage:
-    return ImageTk.PhotoImage(img)
+def open_image(img_path: str) -> Image:
+    try:
+        if not os.path.exists(img_path):
+            raise FileNotFoundError(f"File {img_path} does not exist")
+        return Image.open(img_path)
+    except Exception as e:
+        print(f"Error while opening image: {e}")
+        return Image.new('RGB', (50, 50))
+
+
+def tk_CTkImage(img: Image, width: int, height: int) -> CTkImage:
+    return CTkImage(img, size=(width, height))

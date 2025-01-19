@@ -1,11 +1,11 @@
-from tkinter import ttk
+import customtkinter as ctk
 from customtkinter import CTk
 
 # Classe Interface qui crée une Frame qui contient le contenu de l'application
 class SceneInterface:
     def __init__(self, root: CTk):
         self.root = root
-        self.content: ttk.Frame = None
+        self.content: ctk.CTkFrame = None
         
     def build_interface(self):
         pass
