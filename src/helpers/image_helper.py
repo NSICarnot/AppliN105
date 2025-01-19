@@ -25,5 +25,5 @@ def open_image(img_path: str) -> Image:
         return Image.new('RGB', (50, 50))
 
 
-def tk_CTkImage(img: Image, width: int, height: int) -> CTkImage:
-    return CTkImage(img, size=(width, height))
+def tk_CTkImage(img: Image, width: int, height: int, *, image_dark=None) -> CTkImage:
+    return CTkImage(img, size=(width, height)) if image_dark is None else CTkImage(light_image=img, size=(width, height), dark_image=image_dark)

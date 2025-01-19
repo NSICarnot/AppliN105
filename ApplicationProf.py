@@ -17,8 +17,7 @@ class App():
         
         self.scenes: list[SceneInterface] = [ComputersScene(self.root), ControlScene(self.root)]
         self.actual_scene: SceneInterface = self.scenes[0]
-        
-        c.init_styles()
+
         self.build_interface()
         
     def build_interface(self):        
@@ -28,20 +27,20 @@ class App():
         
         # Content de la toolbar
         # Frame qui contient la menubar à gauche de la fenêtre
-        menubar = ctk.CTkFrame(self.root, width=500, fg_color="blue")
+        menubar = ctk.CTkFrame(self.root, width=500)
         menubar.pack(side='left', fill='y')
         
         # Content de la menubar
         # Bouton sous forme d'image qui affiche la scene affichant tous les ordinateurs connectées
         self.computer_img = ih.tk_CTkImage(
-            ih.open_image('./res/img/computer.png'), 50, 50
+            ih.open_image('./res/img/computer.png'), 50, 50, image_dark=ih.open_image('./res/img/computer-dark.png')
         )  # Self pour garder trace de l'image dans la classe et pour ne pas la supprimer de la mémoire
         computers_button = ctk.CTkLabel(menubar, image=self.computer_img, text='', width=50, height=50)
         computers_button.pack(side='top')
         computers_button.bind("<Button-1>", lambda e: self.change_scene(self.scenes[0]))
 
         self.control_img = ih.tk_CTkImage(
-            ih.open_image('./res/img/access-control.png'), 50, 50
+            ih.open_image('./res/img/access-control.png'), 50, 50, image_dark=ih.open_image('./res/img/access-control-dark.png')
         )
         control_button = ctk.CTkLabel(menubar, image=self.control_img, text='', width=50, height=50)
         control_button.pack(side='top')
