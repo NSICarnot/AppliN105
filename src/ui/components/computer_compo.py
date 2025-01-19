@@ -2,6 +2,7 @@ from PIL import ImageTk, Image
 from tkinter import ttk
 from src.ui.components.component_interface import ComponentInterface
 from src.ui.windows.computer_details import ComputerDetailScene
+import src.helpers.image_helper as ih
 
 
 class ComputerComponent(ComponentInterface):
@@ -21,9 +22,8 @@ class ComputerComponent(ComponentInterface):
         self.text.pack(side='top')
         
         # adding the image in ./res/img/kali-desktop-xfce.jpg to the frame and resized to the size of 25x15
-        img = Image.open('./res/img/kali-desktop-xfce.jpg')
-        img.thumbnail((250, 150))
-        self.image = ImageTk.PhotoImage(img)
+        img = ih.resize_image("./res/img/kali-desktop-xfce.jpg", 250, 150)
+        self.image = ih.to_ImageTk(img)
         self.screen_image = ttk.Label(self.content, image=self.image)
         self.screen_image.pack(side='top')
 
