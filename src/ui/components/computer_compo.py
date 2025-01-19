@@ -29,7 +29,7 @@ class ComputerComponent(ComponentInterface):
 
     def show_details(self) -> None:
         if isinstance(self.details_window, ComputerDetailScene): self.details_window.terminate()
-        self.details_window = ComputerDetailScene(self.ip_addr, self.logged_usr)
+        self.details_window = ComputerDetailScene(self.ip_addr, self.logged_usr, self.image)
         self.details_window.mainloop()
         self.details_window = None
         

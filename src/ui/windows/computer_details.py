@@ -1,12 +1,14 @@
-from tkinter import ttk
-
 import _tkinter
+import src.helpers.image_helper as ih
+
+from tkinter import ttk
 from customtkinter import CTk
+from PIL import Image, ImageTk
 
 class ComputerDetailScene:
-    def __init__(self, ipaddr: str, logged_usr: str):
+    def __init__(self, ipaddr: str, logged_usr: str, image):
         self.root = CTk()
-        self.root.geometry('600x600')
+        self.root.geometry('800x800')
         self.root.resizable(False, False)
         self.root.title(f"Détails de l'ordinateur: {ipaddr} ({logged_usr})")
 
@@ -17,9 +19,31 @@ class ComputerDetailScene:
 
     def build_interface(self):
         self.content = ttk.Frame(self.root)
-        
-        self.text = ttk.Label(self.content, text='Autre Scene', style='HeadTitle.TLabel')
-        self.text.pack(side='top')
+        self.content.pack()
+
+        self.details_dict = {
+            'Adresse IP': self.ipaddr,
+            'Utilisateur connecté': self.logged_usr,
+            'Système d\'exploitation': 'Kali Linux',
+            'Version': '2021.1',
+            'Architecture': '64 bits',
+            'RAM': '8 Go',
+            'Processeur': 'Intel Core i5-8250U',
+            'Stockage': '256 Go SSD',
+            'Carte graphique': 'Intel UHD Graphics 620',
+            'Résolution': '1920x1080',
+            'Audio': 'Haut-parleurs stéréo',
+            'Clavier': 'AZERTY',
+        }
+
+        for i, (key, value) in enumerate(self.details_dict.items()):
+            ttk.Label(self.content, text=key).grid(row=i+1, column=0, sticky='w')
+            ttk.Label(self.content, text=value).grid(row=i+1, column=1, sticky='w')
+
+        img = ih.resize_image("./res/img/kali-desktop-xfce.jpg", 500, 300)
+        self.image = ImageTk.PhotoImage(img, master=self.content)  # Reset master to avoid garbage collector to delete the image
+        self.screen_image = ttk.Label(self.content, image=self.image)
+        self.screen_image.grid(row=100, column=0, columnspan=4)
 
     def get_content(self):
         return self.content
