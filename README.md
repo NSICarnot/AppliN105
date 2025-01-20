@@ -4,6 +4,8 @@ Application de contrôle à distance d'ordinateurs en LAN
 ## TODO List:
  - Centrer les éléments 'ComputerComponent' dans la frame
  - Scan des IPs en asynchrone
+ - Ouverture page web pour chaque élève
+ - Chatbox
  - Les fonctionalités:
     - Affichage de tous les ordinateurs connectés sur le réseau (255.255.255.0)
     - Affichage des informations propres à un PC

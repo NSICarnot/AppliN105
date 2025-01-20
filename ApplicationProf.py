@@ -21,10 +21,6 @@ class App():
         self.build_interface()
         
     def build_interface(self):        
-        # Frame qui contient la toolbar d'une hauteur de 50px
-        toolbar = ctk.CTkFrame(self.root, height=30, fg_color="red")
-        toolbar.pack(side='top', fill='x')
-        
         # Content de la toolbar
         # Frame qui contient la menubar à gauche de la fenêtre
         menubar = ctk.CTkFrame(self.root, width=500)
