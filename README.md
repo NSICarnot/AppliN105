@@ -11,7 +11,7 @@ Application de contrôle à distance d'ordinateurs en LAN
     - Affichage des informations propres à un PC
     - Prise de contrôle du PC
     - Stream de l'écran du professeur sur chaque ordinateur
-    - Stream de l'écran du professeur dur un ordinateur
+    - Stream de l'écran du professeur sur un ordinateur
     - Blockage de la souris / Clavier
     - Cadenas sur l'écran
     - Intervention audio --> émission du son sur chaque poste et casque si connecté

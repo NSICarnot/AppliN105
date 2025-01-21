@@ -23,6 +23,7 @@ class ComputerDetailScene:
 
         self.details_dict = {
             'Adresse IP': self.ipaddr,
+            'Adresse MAC': 'MACADDR',
             'Utilisateur connecté': self.logged_usr,
             'Système d\'exploitation': 'Kali Linux',
             'Version': '2021.1',
@@ -33,7 +34,6 @@ class ComputerDetailScene:
             'Carte graphique': 'Intel UHD Graphics 620',
             'Résolution': '1920x1080',
             'Audio': 'Haut-parleurs stéréo',
-            'Clavier': 'AZERTY',
         }
 
         for i, (key, value) in enumerate(self.details_dict.items()):
@@ -42,7 +42,7 @@ class ComputerDetailScene:
 
         img = ih.resize_image("./res/img/kali-desktop-xfce.jpg", 500, 300)
         self.image = ImageTk.PhotoImage(img, master=self.content)  # Reset master to avoid garbage collector to delete the image
-        self.screen_image = ctk.CTkLabel(self.content, image=self.image)
+        self.screen_image = ctk.CTkLabel(self.content, image=self.image, text='')
         self.screen_image.grid(row=100, column=0, columnspan=4)
 
     def get_content(self):

@@ -50,6 +50,7 @@ class App():
     def change_scene(self, scene: SceneInterface):
         # Enlevier le contenu de la scène sans la détruire
         self.actual_scene.get_content().destroy()
+        self.actual_scene.get_content().pack_forget()
         self.actual_scene = scene
         self.actual_scene.build_interface()
         self.actual_scene.get_content().pack(side='top', fill='both', expand=True)

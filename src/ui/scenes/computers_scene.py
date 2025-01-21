@@ -12,12 +12,12 @@ class ComputersScene(SceneInterface):
         self.computers: list[ComputerComponent] = []
         
     def build_interface(self):
-        self.content = ctk.CTkFrame(self.root)
+        self.content = ctk.CTkScrollableFrame(self.root)
         
         self.text = ctk.CTkLabel(self.content, text='Ordinateurs Connectées', font=c.HEADTITLE_FONT)
         self.text.grid(row=0, column=0, columnspan=4)
         
-        self.computers = [ComputerComponent(self.content) for _ in range(12)]
+        self.computers = [ComputerComponent(self.content) for _ in range(30)]
         # Grid the elements and set the grid to space around each element
         for i, computer in enumerate(self.computers):
             computer.build_interface()
