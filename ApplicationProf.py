@@ -14,7 +14,7 @@ from src.ui.scenes.control_scene import ControlScene
 from src.helpers import image_helper as ih
 
 
-class App():
+class App:
     def __init__(self):
         self.root = CTk()
         self.root.title('Application N105 - Professeur')
