@@ -1,3 +1,9 @@
+"""
+ApplicationProf.py
+Main file of the application
+:authors: T NSI
+"""
+
 import config as c
 import customtkinter as ctk
 
