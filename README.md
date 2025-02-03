@@ -16,4 +16,5 @@ Application de contrôle à distance d'ordinateurs en LAN
     - Cadenas sur l'écran
     - Intervention audio --> émission du son sur chaque poste et casque si connecté
     - Gestion de la télé / vidéo-projecteur
+    - Incrustation fond vert 
  
