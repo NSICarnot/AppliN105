@@ -4,4 +4,5 @@ COMMANDS = {
     'shutdown': 'ShutdownCommand',
     'restart': 'RestartCommand',
     'sleep': 'SleepCommand',
+    'screen': 'ScreenCommand',
 }

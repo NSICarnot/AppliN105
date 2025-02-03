@@ -2,9 +2,9 @@
 ApplicationProf.py
 Main file of the application
 :authors: T NSI
+:licence: GNU version 3
 """
 
-import config as c
 import customtkinter as ctk
 
 from customtkinter import CTk
